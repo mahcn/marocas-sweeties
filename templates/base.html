@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Doce Arte Confeitaria Artesanal - Bolos, doces e sobremesas para festas e eventos sob encomenda.">
+<title>{% block title %}Marocas's Sweeties{% endblock %}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/componentes.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/componentes2.css') }}">
+{% block extra_css %}{% endblock %}
+</head>
+<body>
+{% with mensagens = get_flashed_messages(with_categories=true) %}
+  {% if mensagens %}
+    {% for categoria, mensagem in mensagens %}
+      <div class="flash {{ categoria }}">{{ mensagem }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<header class="header">
+  <div class="container header-inner">
+    <a href="{{ url_for('index') }}" class="logo">Marocas's<span>Sweeties</span></a>
+    <button class="btn-menu" aria-label="Abrir menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav-menu">
+      <ul>
+        <li><a href="{{ url_for('index') }}">Início</a></li>
+        <li><a href="{{ url_for('catalogo') }}">Catálogo</a></li>
+        <li><a href="{{ url_for('sobre') }}">Sobre</a></li>
+        <li><a href="{{ url_for('contato') }}">Contato</a></li>
+      </ul>
+      <a href="{{ whatsapp_link }}" class="btn btn--whatsapp btn--pequeno" target="_blank">Fale pelo WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <div class="logo">Marocas's<span>Sweeties</span></div>
+      <p>Confeitaria artesanal feita com carinho para tornar seus momentos mais doces e inesquecíveis.</p>
+      <div class="footer-social">
+        <a href="https://instagram.com/docearteconfeitaria" target="_blank" aria-label="Instagram">Instagram</a>
+        <a href="{{ whatsapp_link }}" target="_blank" aria-label="WhatsApp">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-links">
+      <h3>Links rápidos</h3>
+      <ul>
+        <li><a href="{{ url_for('catalogo') }}">Catálogo de produtos</a></li>
+        <li><a href="{{ url_for('contato') }}">Solicitar orçamento</a></li>
+        <li><a href="{{ url_for('sobre') }}">Sobre a confeiteira</a></li>
+        <li><a href="{{ url_for('contato') }}">Prazos e entrega</a></li>
+      </ul>
+    </div>
+    <div class="footer-contato">
+      <h3>Encomendas</h3>
+      <p><strong>WhatsApp:</strong> <a href="{{ whatsapp_link }}" target="_blank">{{ whatsapp_format }}</a></p>
+      <p><strong>Instagram:</strong> <a href="https://instagram.com/docearteconfeitaria" target="_blank">@docearteconfeitaria</a></p>
+      <p><strong>Região de atendimento:</strong> São Bernardo do Campo e região do ABC Paulista.</p>
+      <p><strong>Entregas:</strong> Consulte disponibilidade para sua localidade.</p>
+      <p><strong>Prazos:</strong> A combinar conforme a demanda e disponibilidade da agenda.</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="container">© 2026 Marocas's Sweeties. Todos os direitos reservados.</div>
+  </div>
+</footer>
+
+<a href="{{ whatsapp_link }}" class="whatsapp-float" target="_blank" aria-label="Fale conosco pelo WhatsApp - Marocas's Sweeties">
+  <svg viewBox="0 0 24 24" fill="#ffffff" xmlns="http://www.w3.org/2000/svg"><path d="M21.533 2.246c-1.66 2.328-3.797 4.18-6.33 5.27-3.054 1.307-6.304 1.834-9.11 1.834-4.014 0-7.746-1.27-10.364-3.568C1.682 5.84.412 3.71.412 1.818c0-.641.082-1.247.21-1.797.18-.777.525-1.49 1.044-2.038.778-.817 1.9-1.39 3.18-1.787 1.913-.593 4.01-.695 6.138-.234 3.548.769 5.872 2.774 7.005 5.157.425.902.641 1.87.641 2.878 0 1.007-.216 1.975-.647 2.877-1.12 2.24-3.133 4.378-5.81 5.67-.397.193-.795.348-1.17.553-.62.34-1.257.75-1.868 1.23-.488.384-.95.804-1.397 1.267l-.078.08c-.148.15-.305.276-.44.43-.377.428-.716.886-1.01 1.376-.337.56-.62 1.15-.854 1.767-.32.85-.575 1.725-.76 2.627-.207 1.007-.346 2.038-.346 3.066 0 1.027.138 2.055.414 3.065.414 1.513 1.16 2.845 2.455 3.785 1.295.94 2.96 1.527 4.984 1.527 2.556 0 4.82-.964 6.507-2.548 2.384-2.246 3.268-5.474 2.836-8.88-.204-1.61-.836-3.08-1.787-4.342-1.426-1.878-3.397-3.316-5.61-4.175-.467-.18-.947-.336-1.426-.45-.82-.19-1.636-.224-2.442-.125-.806.1-1.597.29-2.367.543-1.313.427-2.59.947-3.81 1.55-1.726.85-3.38 1.852-4.936 2.942-2.458 1.727-4.624 3.615-6.42 5.575-.898.983-1.733 1.99-2.494 3.012-.957 1.286-1.84 2.59-2.62 3.895-1.106 1.85-2.07 3.71-2.88 5.57-.537 1.235-.99 2.48-1.354 3.735-.276.944-.49 1.89-.624 2.84-.202 1.42-.284 2.84-.24 4.26.018.537.073 1.055.186 1.55.203.88.508 1.725.925 2.525.746 1.42 1.725 2.68 2.91 3.705 1.785 1.54 4.005 2.705 6.58 3.447 1.29.372 2.618.544 3.952.544 1.05 0 2.086-.075 3.102-.225 1.52-.225 3.01-.664 4.45-1.305 2.275-1.014 4.38-2.44 6.22-4.265 1.84-1.825 3.407-4.003 4.675-6.527.635-1.267 1.16-2.59 1.55-3.955.585-2.044.92-4.154.92-6.32 0-1.825-.256-3.62-.76-5.375-.76-2.64-1.93-5.12-3.506-7.435-2.505-3.68-5.69-6.995-9.54-9.91z"/></svg>
+  <span>WhatsApp</span>
+</a>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+{% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Catálogo | Doce Arte Confeitaria{% endblock %}
+{% block extra_css %}
+<style>
+.categoria-badge{font-size:0.75rem;text-transform:uppercase;letter-spacing:1px;font-weight:700;color:var(--cor-primaria);margin-bottom:6px;display:block;}
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="section--menor">
+  <div class="container">
+    <div class="titulo-secao">
+      <h2>Catálogo de Produtos</h2>
+      <p style="text-align:center;color:var(--cor-texto-suave);max-width:600px;margin:0 auto 30px;">Escolha entre nossas categorias ou veja todos os produtos disponíveis para encomenda.</p>
+    </div>
+    <div class="filtros">
+      <button class="filtro-btn ativo" data-categoria="todos">Todos</button>
+      {% for c in categorias %}
+      <button class="filtro-btn" data-categoria="{{ c.id }}">{{ c.nome }}</button>
+      {% endfor %}
+    </div>
+    <div class="destaques-grid" id="grade-produtos">
+      {% for p in produtos %}
+      <a href="{{ url_for('produto', slug=p.slug) }}" class="card-produto" data-anim data-categoria="{{ p.categoria }}">
+        <div class="card-imagem">
+          <img src="{{ url_for('static', filename=p.imagem) }}" alt="{{ p.nome }}" onerror="this.src='{{ url_for('static', filename='images/placeholder.svg') }}'">
+          <span class="categoria-badge">{{ p.categoria }}</span>
+        </div>
+        <div class="card-conteudo">
+          <h3>{{ p.nome }}</h3>
+          <div class="card-preco">{% if p.preco is not none %}R$ {{ '%.2f'|format(p.preco) }}{% else %}Orçamento personalizado{% endif %}<span>{% if p.preco is not none %}/{{ p.unidade }}{% endif %}</span></div>
+          <p class="card-desc">{{ p.descricao }}</p>
+          <div class="card-rodape">
+            <span class="btn btn--whatsapp btn-card" data-whatsapp="Olá, Doce Arte! Gostaria de solicitar orçamento do {{ p.nome }}.">Solicitar</span>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% if not produtos %}
+    <p style="text-align:center;color:var(--cor-texto-suave);">Nenhum produto encontrado nesta categoria.</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.querySelectorAll('.filtro-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelectorAll('.filtro-btn').forEach(b=>b.classList.remove('ativo'));
+    btn.classList.add('ativo');
+    const cat=btn.dataset.categoria;
+    document.querySelectorAll('.card-produto').forEach(card=>{
+      card.style.display=(cat==='todos'||card.dataset.categoria===cat)?'flex':'none';
+    });
+  });
+});
+</script>
+{% endblock %}

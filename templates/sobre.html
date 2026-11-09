@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Sobre | Marocas's Sweeties{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="titulo-secao"><h2>Nossa História</h2></div>
+    <div class="sobre-grid">
+      <div class="sobre-imagem"><img src="{{ url_for('static', filename='images/placeholder.svg') }}" alt="Confeiteira"></div>
+      <div class="sobre-texto">
+        <h3>Marocas's Sweeties</h3>
+        <p>Tudo começou com o desejo de levar mais doçura para as celebrações das pessoas. Com dedicação e carinho, a paixão virou um compromisso: criar doces e sobremesas que encantam os olhos e o paladar.</p>
+        <p>Cada produto é feito sob encomenda, com atenção aos mínimos detalhes. Valorizamos o sabor caseiro, a apresentação elegante e o atendimento próximo a cada cliente.</p>
+        <div style="display:flex;gap:24px;margin-top:28px;">
+          <div class="stat"><div class="stat-numero">Artesanal</div><div class="stat-label">Feito com carinho</div></div>
+          <div class="stat"><div class="stat-numero">Sob encomenda</div><div class="stat-label">Para sua celebração</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Contato e Orçamento | Doce Arte Confeitaria{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="titulo-secao">
+      <h2>Fale conosco</h2>
+    </div>
+    <div class="grid-duplo">
+      <div>
+        <form action="{{ url_for('contato') }}" method="POST" class="form-contato" novalidate>
+          <div class="grid-duplo" style="margin-bottom:24px;">
+            <div class="campo"><label>Nome completo</label><input type="text" name="nome" required></div>
+            <div class="campo"><label>E-mail</label><input type="email" name="email" required></div>
+          </div>
+          <div class="campo"><label>Telefone (WhatsApp)</label><input type="tel" name="telefone" required></div>
+          <div class="campo"><label>Produto ou interesse</label><select name="produto"><option value="">Selecione...</option>{% for c in categorias %}<option>{{ c.nome }}</option>{% endfor %}<option value="Outro">Outro</option></select></div>
+          <div class="campo"><label>Data do evento (opcional)</label><input type="date" name="data_evento"></div>
+          <div class="campo"><label>Mensagem / Detalhes da encomenda</label><textarea name="mensagem" required placeholder="Conte um pouco sobre a sua festa e o que deseja encomendar..."></textarea></div>
+          <button type="submit" class="btn btn--primario" style="width:100%;">Enviar Solicitação</button>
+        </form>
+      </div>
+      <div>
+        <div class="info-grid">
+          <div class="info-card"><span class="icone">📱</span><h3>WhatsApp</h3><p>Envie uma mensagem para {{ whatsapp_format }} e receba atendimento rápido.</p></div>
+          <div class="info-card"><span class="icone">📸</span><h3>Instagram</h3><p>Acompanhe nossos trabalhos em @marocassweeties.</p></div>
+          <div class="info-card"><span class="icone">📦</span><h3>Prazos</h3><p>Prazos a combinar conforme a demanda e disponibilidade da agenda.</p></div>
+          <div class="info-card"><span class="icone">🏠</span><h3>Retirada e Entrega</h3><p>Atendemos São Bernardo do Campo e região do ABC Paulista. Local e condições a combinar após confirmação da encomenda.</p></div>
+          <div class="info-card"><span class="icone">💳</span><h3>Pagamento</h3><p>Formas de pagamento a combinar no fechamento do pedido.</p></div>
+          <div class="info-card"><span class="icone">❓</span><h3>Dúvidas</h3><p>Use o formulário ou o WhatsApp para esclarecer sabores, tamanhos e personalizações.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

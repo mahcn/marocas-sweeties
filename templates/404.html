@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Página não encontrada | Marocas's Sweeties{% endblock %}
+
+{% block content %}
+<section class="section" style="text-align:center;min-height:60vh;display:flex;flex-direction:column;align-items:center;justify-content:center;">
+  <h1 style="font-size:clamp(2rem,6vw,4rem);color:var(--cor-primaria);margin-bottom:12px;">Oops!</h1>
+  <p style="color:var(--cor-texto-suave);max-width:400px;margin-bottom:24px;">Essa página não existe, mas nossos doces são reais. Que tal voltar ao início e escolher algo delicioso da Marocas's Sweeties?</p>
+  <a href="{{ url_for('index') }}" class="btn btn--primario">Ir para o Início</a>
+</section>
+{% endblock %}

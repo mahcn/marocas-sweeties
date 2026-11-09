@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block title %}{{ produto.nome }} | Doce Arte Confeitaria{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="container">
+    <div class="produto-detalhe">
+      <div class="produto-imagem">
+        <img src="{{ url_for('static', filename=produto.imagem) }}" alt="{{ produto.nome }}" onerror="this.src='{{ url_for('static', filename='images/placeholder.svg') }}'">
+      </div>
+      <div class="produto-info">
+        <span class="produto-categoria">{{ produto.categoria }}</span>
+        <h1>{{ produto.nome }}</h1>
+        <div class="produto-preco {% if produto.preco is none %}personalizado{% endif %}">
+          {% if produto.preco is not none %}R$ {{ '%.2f'|format(produto.preco) }}{% else %}Orçamento personalizado{% endif %}
+        </div>
+        <div class="produto-unidade">Unidade de venda: {{ produto.unidade }}</div>
+        <div class="produto-desc">
+          <p>{{ produto.descricao }}</p>
+          {% if produto.porcao %}<p><strong>Porção:</strong> {{ produto.porcao }}</p>{% endif %}
+        </div>
+        <div class="produto-acoes">
+          <a href="{{ whatsapp_link }}?text={{ (produto.whatsapp or ('Olá, Doce Arte! Gostaria de orçamento do ' + produto.nome))|urlencode }}" class="btn btn--whatsapp" target="_blank">Solicitar pelo WhatsApp</a>
+          <a href="{{ url_for('contato') }}" class="btn btn--fantasma">Outras formas de contato</a>
+        </div>
+        <div style="margin-top:28px;">
+          <h3 style="margin-bottom:14px;">Você também vai gostar</h3>
+          <div class="relacionados-grid">
+            {% for r in relacionados %}
+            <a href="{{ url_for('produto', slug=r.slug) }}" class="card-mini" style="background-image:url('{{ url_for('static', filename=r.imagem) }}');"><span>{{ r.nome }}</span></a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

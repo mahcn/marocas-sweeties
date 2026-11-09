@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Marocas's Sweeties | Doces Artesanais para Eventos{% endblock %}
+
+{% block content %}
+<section class="hero section">
+  <div class="container">
+    <div class="hero-texto">
+      <h2>Doces artesanais feitos com amor</h2>
+      <h1>Marocas's Sweeties</h1>
+      <p>Doces e sobremesas preparados com carinho para transformar suas celebrações em momentos inesquecíveis.</p>
+      <div class="hero-actions">
+        <a href="{{ url_for('catalogo') }}" class="btn btn--primario">Ver Catálogo</a>
+        <a href="{{ whatsapp_link }}" class="btn btn--whatsapp" target="_blank">Solicitar Orçamento</a>
+      </div>
+    </div>
+    <div class="hero-imagem">
+      <img src="{{ url_for('static', filename='images/placeholder.svg') }}" alt="Bolo artesanal">
+      <div class="hero-badge"><span>Atendimento</span> <i>São Bernardo do Campo e região do ABC Paulista</i></div>
+    </div>
+  </div>
+</section>
+
+<section class="sobre-destaque section--menor">
+  <div class="container sobre-grid">
+    <div class="sobre-imagem">
+      <img src="{{ url_for('static', filename='images/placeholder.svg') }}" alt="Confeiteira artesanal">
+    </div>
+    <div class="sobre-texto">
+      <h3>Conheça a Marocas's Sweeties</h3>
+      <p>Olá! Sou a artesã por trás da Marocas's Sweeties. Cada receita é desenvolvida com dedicação, respeito aos sabores tradicionais e um toque de criatividade. Acreditamos que os melhores momentos da vida merecem ser celebrados com muito carinho e doçura.</p>
+      <p>Trabalhamos com encomendas personalizadas para festas de aniversário, casamentos, chás de bebê, eventos corporativos e datas especiais.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="titulo-secao">
+      <h2>Nossos destaques</h2>
+    </div>
+    <div class="destaques-grid">
+      {% for p in destaques %}
+      <a href="{{ url_for('produto', slug=p.slug) }}" class="card-produto" data-anim>
+        <div class="card-imagem">
+          <img src="{{ url_for('static', filename=p.imagem) }}" alt="{{ p.nome }}" onerror="this.src='{{ url_for('static', filename='images/placeholder.svg') }}'">
+          {% if p.destaque %}<span class="card-tag">Mais vendido</span>{% endif %}
+        </div>
+        <div class="card-conteudo">
+          <h3>{{ p.nome }}</h3>
+          <div class="card-preco">{% if p.preco is not none %}R$ {{ '%.2f'|format(p.preco) }}{% else %}Orçamento personalizado{% endif %}<span>{% if p.preco is not none %}/{{ p.unidade }}{% endif %}</span></div>
+          <p class="card-desc">{{ p.descricao }}</p>
+          <div class="card-rodape">
+            <span class="btn btn--whatsapp btn-card" data-whatsapp="Olá, Doce Arte! Gostaria de solicitar orçamento do {{ p.nome }}.">WhatsApp</span>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endblock %}
