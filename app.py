@@ -24,9 +24,9 @@ CATEGORIAS = [
     {"id": "bem-casados", "nome": "Bem-casados"},
 ]
 
-WHATSAPP_NUMBER = os.environ.get("WHATSAPP_NUMBER", "5511999999999")
+WHATSAPP_NUMBER = os.environ.get("WHATSAPP_NUMBER", "5511976000189")
 WHATSAPP_LINK = f"https://wa.me/{WHATSAPP_NUMBER}"
-WHATSAPP_FORMAT = "(11) 9 9999-9999"
+WHATSAPP_FORMAT = "(11) 9 7600-0189"
 
 
 @app.context_processor

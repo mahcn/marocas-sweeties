@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
       const msg = el.getAttribute('data-whatsapp') || 'Olá, Marocas\'s Sweeties!';
-      const number = window.WHATSAPP_NUMBER || '5511999999999';
+      const number = window.WHATSAPP_NUMBER || '5511976000189';
       window.open(`https://wa.me/${number}?text=${encodeURIComponent(msg)}`, '_blank');
     });
   });

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}{{ produto.nome }} | Doce Arte Confeitaria{% endblock %}
+{% block title %}{{ produto.nome }} | Marocas's Sweeties{% endblock %}
 
 {% block content %}
 <section class="section">
@@ -21,7 +21,7 @@
           {% if produto.porcao %}<p><strong>Porção:</strong> {{ produto.porcao }}</p>{% endif %}
         </div>
         <div class="produto-acoes">
-          <a href="{{ whatsapp_link }}?text={{ (produto.whatsapp or ('Olá, Doce Arte! Gostaria de orçamento do ' + produto.nome))|urlencode }}" class="btn btn--whatsapp" target="_blank">Solicitar pelo WhatsApp</a>
+          <a href="{{ whatsapp_link }}?text={{ (produto.whatsapp or ('Olá, Marocas\'s Sweeties! Gostaria de orçamento do ' + produto.nome))|urlencode }}" class="btn btn--whatsapp" target="_blank">Solicitar pelo WhatsApp</a>
           <a href="{{ url_for('contato') }}" class="btn btn--fantasma">Outras formas de contato</a>
         </div>
         <div style="margin-top:28px;">

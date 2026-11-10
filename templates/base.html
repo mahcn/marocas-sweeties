@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Doce Arte Confeitaria Artesanal - Bolos, doces e sobremesas para festas e eventos sob encomenda.">
+<meta name="description" content="Marocas's Sweeties - Confeitaria artesanal de doces e sobremesas para festas e eventos sob encomenda.">
 <title>{% block title %}Marocas's Sweeties{% endblock %}</title>
 <link rel="icon" href="{{ url_for('static', filename='images/logo/favicon-placeholder.svg') }}" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,7 +33,7 @@
     <nav class="nav-menu">
       <ul>
         <li><a href="{{ url_for('index') }}">Início</a></li>
-        <li><a href="{{ url_for('catalogo') }}">Catálogo</a></li>
+        <li><a href="{{ url_for('catalogo') }}">Cardápio</a></li>
         <li><a href="{{ url_for('sobre') }}">Sobre</a></li>
         <li><a href="{{ url_for('contato') }}">Contato</a></li>
       </ul>
@@ -55,14 +55,14 @@
       </div>
       <p>Confeitaria artesanal feita com carinho para tornar seus momentos mais doces e inesquecíveis.</p>
       <div class="footer-social">
-        <a href="https://instagram.com/docearteconfeitaria" target="_blank" aria-label="Instagram">Instagram</a>
+        <a href="https://instagram.com/marocassweeties" target="_blank" aria-label="Instagram">Instagram</a>
         <a href="{{ whatsapp_link }}" target="_blank" aria-label="WhatsApp">WhatsApp</a>
       </div>
     </div>
     <div class="footer-links">
       <h3>Links rápidos</h3>
       <ul>
-        <li><a href="{{ url_for('catalogo') }}">Catálogo de produtos</a></li>
+        <li><a href="{{ url_for('catalogo') }}">Nosso Cardápio</a></li>
         <li><a href="{{ url_for('contato') }}">Solicitar orçamento</a></li>
         <li><a href="{{ url_for('sobre') }}">Sobre a confeiteira</a></li>
         <li><a href="{{ url_for('contato') }}">Prazos e entrega</a></li>
@@ -71,7 +71,7 @@
     <div class="footer-contato">
       <h3>Encomendas</h3>
       <p><strong>WhatsApp:</strong> <a href="{{ whatsapp_link }}" target="_blank">{{ whatsapp_format }}</a></p>
-      <p><strong>Instagram:</strong> <a href="https://instagram.com/docearteconfeitaria" target="_blank">@docearteconfeitaria</a></p>
+      <p><strong>Instagram:</strong> <a href="https://instagram.com/marocassweeties" target="_blank">@marocassweeties</a></p>
       <p><strong>Região de atendimento:</strong> São Bernardo do Campo e região do ABC Paulista.</p>
       <p><strong>Entregas:</strong> Consulte disponibilidade para sua localidade.</p>
       <p><strong>Prazos:</strong> A combinar conforme a demanda e disponibilidade da agenda.</p>
