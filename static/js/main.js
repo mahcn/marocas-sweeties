@@ -33,8 +33,9 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('[data-whatsapp]').forEach((el) => {
     el.addEventListener('click', (e) => {
       e.preventDefault();
-      const msg = el.getAttribute('data-whatsapp') || 'Olá, Doce Arte Confeitaria!';
-      window.open(`https://wa.me/5511999999999?text=${encodeURIComponent(msg)}`, '_blank');
+      const msg = el.getAttribute('data-whatsapp') || 'Olá, Marocas\'s Sweeties!';
+      const number = window.WHATSAPP_NUMBER || '5511999999999';
+      window.open(`https://wa.me/${number}?text=${encodeURIComponent(msg)}`, '_blank');
     });
   });
 

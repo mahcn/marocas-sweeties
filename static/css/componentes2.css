@@ -54,6 +54,10 @@
 [data-anim]{opacity:0;}
 [data-anim].visivel{opacity:1;animation:fadeInUp 0.8s ease both;}
 
+.logo-img{width:40px;height:40px;object-fit:contain;display:block;}
+.logo-text{display:flex;flex-direction:column;line-height:1.1;}
+.footer-logo-img{width:36px;height:36px;object-fit:contain;}
+
 @media (max-width:768px){
   .btn-menu{display:block;}
   .btn-menu.ativo span:nth-child(1){top:50%;transform:translateY(-50%) rotate(45deg);}

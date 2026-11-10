@@ -19,13 +19,9 @@ PRODUTOS = carregar_produtos()
 POR_SLUG = {p["slug"]: p for p in PRODUTOS}
 
 CATEGORIAS = [
-    {"id": "bolos-tradicionais", "nome": "Bolos Tradicionais"},
-    {"id": "bolos-decorados", "nome": "Bolos Decorados e Personalizados"},
-    {"id": "bolos-por-quilo", "nome": "Bolos por Quilo"},
-    {"id": "brigadeiros-beijinhos", "nome": "Brigadeiros e Beijinhos"},
-    {"id": "doces-festas", "nome": "Doces para Festas"},
-    {"id": "centos-doces", "nome": "Centos de Doces"},
-    {"id": "sobremesas-especiais", "nome": "Sobremesas e Produtos Especiais"},
+    {"id": "bolos", "nome": "Bolos"},
+    {"id": "docinhos", "nome": "Docinhos"},
+    {"id": "bem-casados", "nome": "Bem-casados"},
 ]
 
 WHATSAPP_NUMBER = os.environ.get("WHATSAPP_NUMBER", "5511999999999")
